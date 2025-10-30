@@ -5,7 +5,8 @@ email = {
     "subject": "  Quarterly Report  ",
     "from": "  Alice.Cooper@Company.ru ",
     "to": "   bob_smith@Gmail.com   ",
-    "body": "Hello Bob,\n\tHere is the quarterly report.\n\tPlease review and let me know your feedback.\n\nBest,\nAlice",
+    "body": "Hello Bob,\n\tHere is the quarterly report.\n\tPlease review"
+    " and let me know your feedback.\n\nBest,\nAlice",
 }
 
 # 2. Добавление даты отправки
@@ -61,7 +62,8 @@ email["clean_body"] = email["body"].replace("\t", " ").replace("\n", " ")
 
 # 10. Формирование текста отправленного письма
 email["sent_text"] = (
-    f"Кому: {email["to"]}, от {email["from"]} Тема: {email["subject"].strip()}, дата {email["date"]} {email["clean_body"]}"
+    f"Кому: {email["to"]}, от {email["from"]} Тема: {email["subject"].strip()},"
+    f" дата {email["date"]} {email["clean_body"]}"
 )
 
 # 11. Рассчёт количества страниц печати
