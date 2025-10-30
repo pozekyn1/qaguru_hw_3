@@ -5,7 +5,7 @@ email = {
     "subject": "  Quarterly Report  ",
     "from": "  Alice.Cooper@Company.ru ",
     "to": "   bob_smith@Gmail.com   ",
-    "body": "Hello Bob,\n\tHere is the quarterly report.\n\tPlease review and let me know your feedback.\n\nBest,\nAlice"
+    "body": "Hello Bob,\n\tHere is the quarterly report.\n\tPlease review and let me know your feedback.\n\nBest,\nAlice",
 }
 
 # 2. Добавление даты отправки
@@ -25,10 +25,30 @@ email["short_body"] = email["body"][:10] + "..."
 
 # 6. Создание списков личных и корпоративных доменов с неповторяющимися значениями
 personal_domains = list(
-    {'gmail.com', 'list.ru', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com', 'yandex.ru', 'mail.ru', 'list.ru',
-     'bk.ru', 'inbox.ru'})
+    {
+        "gmail.com",
+        "list.ru",
+        "yahoo.com",
+        "outlook.com",
+        "hotmail.com",
+        "icloud.com",
+        "yandex.ru",
+        "mail.ru",
+        "list.ru",
+        "bk.ru",
+        "inbox.ru",
+    }
+)
 corporate_domains = list(
-    {'company.ru', 'corporation.com', 'university.edu', 'organization.org', 'company.ru', 'business.net'})
+    {
+        "company.ru",
+        "corporation.com",
+        "university.edu",
+        "organization.org",
+        "company.ru",
+        "business.net",
+    }
+)
 
 # 7. Проверка пересечений в списке личных и корпоративных доменов
 has_intersection = bool(set(personal_domains) & set(corporate_domains))
@@ -40,8 +60,9 @@ is_corporate = domain in corporate_domains
 email["clean_body"] = email["body"].replace("\t", " ").replace("\n", " ")
 
 # 10. Формирование текста отправленного письма
-email[
-    "sent_text"] = f"Кому: {email["to"]}, от {email["from"]} Тема: {email["subject"].strip()}, дата {email["date"]} {email["clean_body"]}"
+email["sent_text"] = (
+    f"Кому: {email["to"]}, от {email["from"]} Тема: {email["subject"].strip()}, дата {email["date"]} {email["clean_body"]}"
+)
 
 # 11. Рассчёт количества страниц печати
 pages = (len(email["sent_text"]) + 499) // 500
