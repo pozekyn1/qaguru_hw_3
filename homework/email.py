@@ -70,8 +70,8 @@ email["sent_text"] = (
 pages = (len(email["sent_text"]) + 499) // 500
 
 # 12. Проверка пустоты темы и тела письма
-is_subject_empty = not email["subject"]
-is_body_empty = not email["body"]
+is_subject_empty = not email["subject"].strip()
+is_body_empty = not email["body"].strip()
 
 # 13. Создание «маски» e-mail отправителя
 email["masked_from"] = login[:2] + "***@" + domain
